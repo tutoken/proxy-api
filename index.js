@@ -2,6 +2,7 @@
 var express = require('express')
 var app = express()
 var bodyParser = require('body-parser')
+var cors = require('cors')
 const fetch = require('node-fetch');
 
 app.get('/accounts/TrueUSD/state', async function (req, res) {
@@ -15,8 +16,9 @@ app.get('/accounts/TrueUSD/state', async function (req, res) {
 })
 
 app.use(bodyParser)
-module.exports = app.listen(80, function () {
-    console.log('start report steemit user data on port 80')
+app.use(cors())
+module.exports = app.listen(8080, function () {
+    console.log('start report steemit user data on port 8080')
 })
 app.set('trust proxy', true)
 
